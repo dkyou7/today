@@ -19,19 +19,19 @@ public class BoardController {
     @GetMapping("boards")
     public String findAll(Model model){
         model.addAttribute("boards",boardService.findAll());
-        return "boards";
+        return "board/boards";
     }
 
     @GetMapping("{title}")
     public String findByTitle(Model model, @PathVariable("title") String title){
         model.addAttribute("board",boardService.findByTitle(title));
-        return "details";
+        return "board/details";
     }
 
     @GetMapping("new")
     public String dispBoardForm(Model model){
-        model.addAttribute("board",new BoardDto());
-        return "newBoard";
+        model.addAttribute("boardForm",new BoardDto());
+        return "board/newBoard";
     }
 
     @PostMapping("new")

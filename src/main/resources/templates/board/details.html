@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
 </head>
 <body>
-    <h2>board details 입니다. 제목 기반 검색이죠.</h2>
+<a th:href="@{/}">
+    <img src="/images/header_banner.jpg"  class="justify-content-center offset-md-1">
+</a>
+<div class="container mt-5 border border-white bg-light p-5">
+    <h2>일지 작성하기</h2>
+    <form th:action="@{/board/new}" th:object="${board}" method="post">
+        <div class="form-group mt-1">
+            <label for="author">지은이</label>
+            <input type="text" class="form-control" id="author" th:field="*{author}" disabled>
+        </div>
+        <div class="form-group mt-1">
+            <label for="title">제목</label>
+            <input type="text" class="form-control" id="title" th:field="*{title}" disabled>
+        </div>
+        <div class="form-group mt-1 mb-5">
+            <label for="content">내용</label>
+            <textarea rows="10" cols="40" class="form-control" id="content" th:field="*{content}" disabled></textarea>
+        </div>
+        <a th:href="@{/board/boards}" th:text="목록으로" class="btn btn-primary"></a>
+    </form>
+</div>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </body>
 </html>

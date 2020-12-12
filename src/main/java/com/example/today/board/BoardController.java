@@ -21,10 +21,9 @@ public class BoardController {
         model.addAttribute("boards",boardService.findAll());
         return "board/boards";
     }
-
-    @GetMapping("{title}")
-    public String findByTitle(Model model, @PathVariable("title") String title){
-        model.addAttribute("board",boardService.findByTitle(title));
+    @GetMapping("{id}")
+    public String findById(Model model,@PathVariable("id") Long id){
+        model.addAttribute("board",boardService.findById(id));
         return "board/details";
     }
 

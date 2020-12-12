@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
 </head>
 <body>
-    <h2>boards 입니다.</h2>
+<div class="container mt-5">
+    <a th:href="@{/}">
+        <img src="/images/header_banner.jpg"  class="justify-content-center offset-md-1">
+    </a>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a th:href="@{/board/new}" class="btn btn-primary btn-lg justify-content-md-end">글쓰기</a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">생성일자</th>
+            <th scope="col">작가</th>
+            <th scope="col">제목</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board : ${boards}">
+            <td th:text="${#temporals.format(board.createdDate,'yyyy-MM-dd')}">@mdo</td>
+            <td th:text="${board.author}">Mark</td>
+            <td><a th:href="@{'/board/' + ${board.id}}"><span th:text="${board.title}"></span></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </body>
 </html>
